@@ -1,0 +1,10 @@
+Yes, these rules are different.
+
+/dir will match a file, directory, link, anything named dir
+/dir/ will match only a directory named dir
+/dir/* will match all files, directories and anything else inside a directory named dir (but not the dir directory itself).
+/dir, /dir/ and /dir/* are NOT equivalent. The difference is very clear when using overriding rules, like the famous !.gitkeep to get around the limitation of tracking empty directories. Suppose the existence of the file dir/.gitkeep
+
+With /dir and /dir/, Git won't even look inside the directory so the .gitkeep won't be seen.
+With /dir/*, the file will be detected by Git and the directory will be kept if this .gitkeep is committed, because the rule doesn't apply to the directory itself, only to its contents.
+OBSERVATION: All the rules mentioned above are anchored at the current directory (the place where the .gitignore is), because of the / prefix. Without the prefix, the rules would apply not only for that specific directory, but also for the sub-directories or everywhere in the repository, if the .gitignore is located at the root level.
