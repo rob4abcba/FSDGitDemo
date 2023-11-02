@@ -1,0 +1,6 @@
+All the rules mentioned above are anchored at the current directory (the place where the .gitignore is), because of the / prefix." — For clarity they ARE anchored to the current directory, but not JUST because of the / prefix. It's because a / slash appears somewhere in the line. Quoting from .gitignore documentation: "The pattern doc/frotz and /doc/frotz have the same effect in any .gitignore file. In other words, a leading slash is not relevant if there is already a middle slash in the pattern." – 
+Dave Houlbrooke
+ Jun 16, 2020 at 18:41 
+The leading slash is needed in the example above, given that the first ignored object is a single word, not a composed path. Also, it is considered good practice to use the leading slash to denote the anchoring to the current path. Without it, the author's intention is unclear and subject to interpretation. Introducing two ways of doing the same exact thing is something to be avoided, specially for configuration. If you want to anchor to the current directory, do your team a favor, be clear and use the leading slash. – 
+Victor Schröder
+ Jun 17, 2020 at 23:50
